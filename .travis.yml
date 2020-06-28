@@ -7,12 +7,13 @@ script:
 before_deploy:
   - sudo apt-get install python3-pip python3-setuptools
   - pip3 install cloudsmith-cli
-  - export PACKAGE_FILE_NAME=HelloFsharp-${TRAVIS_TAG}.tar.gz
-  - tar -zcf ${PACKAGE_FILE_NAME} bin\Release\netcoreapp3.1\linux-arm\publish\
+  - export PACKAGE_FILE_NAME=HelloFsharp-$TRAVIS_TAG.tar.gz
+  - tar -zcf $PACKAGE_FILE_NAME bin/Release/netcoreapp3.1/linux-arm/publish/
 
 deploy:
   provider: script
   skip_cleanup: true
   script: cloudsmith push raw bartosz-podlejski/hellofsharp ${PACKAGE_FILE_NAME}
   on:
+    tags: true
     branch: master
