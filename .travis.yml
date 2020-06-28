@@ -2,4 +2,8 @@ language: csharp
 mono: none
 dotnet: 3.1.300
 script:
- - dotnet build
+ - dotnet publish -r linux-arm -c Release
+
+before_deploy:
+  - pyenv global 3.6
+  - pip install cloudsmith-cli
