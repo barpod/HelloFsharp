@@ -6,6 +6,7 @@ script:
 
 before_deploy:
   - sudo apt-get install python3-setuptools python3-pip
+  - pip install --upgrade pip
   - pip install cloudsmith-cli
   - export PACKAGE_FILE_NAME=HelloFsharp-${TRAVIS_TAG}.tar.gz
   - tar -zcf ${PACKAGE_FILE_NAME} bin\Release\netcoreapp3.1\linux-arm\publish\
